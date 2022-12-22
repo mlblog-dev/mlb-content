@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.github.mlb.content.biz.category.mapper.CategoryMapper">
+
+    <select id="selectListByIdOrSlug" resultType="org.github.mlb.content.category.entity.CategoryEntity">
+        select *
+        from
+            b_content_category
+        where
+            repository_id =
+        <choose>
+            <when test="repositorySlug != null and repositorySlug != '' ">
+                (select id from b_content_repository where slug = #{repositorySlug})
+            </when>
+            <otherwise>#{repositoryId}</otherwise>
+        </choose>
+    </select>
+
+    <select id="selectListIdByUserId" resultType="java.lang.Long">
+        SELECT id FROM b_content_repository
+        WHERE user_id = #{userId}
+          AND is_deleted = 0;
+    </select>
+
+</mapper>

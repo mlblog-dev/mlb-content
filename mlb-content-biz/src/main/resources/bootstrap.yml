@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /content
+
+spring:
+  application:
+    name: mlb-content
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER}
+      config:
+        server-addr: ${NACOS_SERVER}
+        namespace:  ${NACOS_NAMESPACE}
+        extension-configs:
+          - data-id: content-mysql.yaml
+            group: ${spring.profiles.active}
+            refresh: false
+          - data-id: redis-config.yaml
+            group: ${spring.profiles.active}
+            refresh: false

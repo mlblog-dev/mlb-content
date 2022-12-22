@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.github.mlb.content.biz.repository.mapper.RepositoryMapper">
+
+    <select id="selectPageByParam" resultType="org.github.mlb.content.repository.entity.RepositoryEntity">
+        select * from b_content_repository
+        where
+    </select>
+
+    <select id="selectListIdByUserId" resultType="java.lang.Long">
+        SELECT id FROM b_content_repository
+
+    </select>
+
+</mapper>
